@@ -14,6 +14,44 @@ app.use(bodyParser.urlencoded({
 
 //app.use(app.router);
 
+/*DELETE
+'use strict';
+
+// [START firestore_quickstart]
+const Firestore = require('@google-cloud/firestore');
+async function main() {
+    const firestore = new Firestore();
+
+    const document = firestore.doc('posts/intro-to-firestore');
+    console.log('Document created');
+
+    // Enter new data into the document.
+    await document.set({
+      title: 'Welcome to Firestore',
+      body: 'Hello World',
+    });
+    console.log('Entered new data into the document');
+
+    // Update an existing document.
+    await document.update({
+      body: 'My first Firestore app',
+    });
+    console.log('Updated an existing document');
+
+    // Read the document.
+    let doc = await document.get();
+    console.log('Read the document');
+
+    // Delete the document.
+    await document.delete();
+    console.log('Deleted the document');
+
+};
+
+main().catch(console.error);
+*/ //END DELETE 
+
+
 
 /**
  * HTTP function that supports CORS requests.
@@ -49,6 +87,35 @@ var pushCount = 0;
 app.get('/', (req, res) => {
   res.status(200).send("get /tablist dummy");
   console.log("Someone tried to GET root");
+      // Save the data to the database.
+      var firebase = require("firebase");
+var config = {
+        apiKey: "AIzaSyAdsvYEHkJGqv-400bnWrqqTGi1xA-xdqU",
+        authDomain: "browser-buddies.firebaseapp.com",
+        databaseURL: "https://browser-buddies.firebaseio.com/",
+        projectId: "browser-buddies",
+        storageBucket: "browser-buddies.appspot.com",
+        //messagingSenderId: "1023908821307"
+    };
+
+    if (!firebase.apps.length){
+    firebase.initializeApp(config);
+    }
+
+
+        //GENERATE USER ID -- assign default value -1/
+       firebase.database().ref("userCredentials/").push(-1);
+       firebase.database().ref("tabs/").on("value", function(snapshot){
+           console.log(snapshot.val());       });
+      //  / update user count stat */
+        /*
+        firebase.database().ref("userCount/").transaction(function(id){
+            id +=1;
+            return id;
+        });
+
+*/
+ 
 });
 
 app.get('/clear', (req, res) => {
