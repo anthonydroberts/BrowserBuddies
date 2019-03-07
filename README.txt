@@ -3,7 +3,7 @@ cuHacking 2019 submission - Browser Buddies
 ============================TEAM MEMBERS:
 Luke Connolly
 Anthony Roberts
-Maya Saringan
+Maya Saringan 
 
 ==========================INCLUDED FILES:
 "Client code" folder - contains the code for the chrome extension.
