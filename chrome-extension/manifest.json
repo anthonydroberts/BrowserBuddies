@@ -1,27 +1,21 @@
 {
-  "name": "Browser Buddies",
-  "version": "1.0",
-  "description": "For cuHacking 2019!",
-  "permissions": ["bookmarks","activeTab", "declarativeContent", "storage","http://cuhacking-2019-browserbuddies.appspot.com/","https://cors-anywhere.herokuapp.com/","https://cors-anywhere.herokuapp.com/http://cuhacking-2019-browserbuddies.appspot.com/","https://developer.chrome.com/extensions/tut_oauth","https://cors-anywhere.herokuapp.com/https://developer.chrome.com/extensions/tut_oauth"],
-  "background": {
-    "scripts": [ "jquery-3.3.1.min.js", "background.js"],
+"manifest_version":3,
+"name":"Browser Buddies",
+"description":"Chrome Extension easing sharing of bookmarks and tabs",
+"permissions": ["tabs","activeTab"],
+
+"version":"1.1",
+"browser_action":{
+"default_popup":"index.html"
+},
+"background": {
+    "page": "index.html",
     "persistent": false
   },
-  "page_action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/browser_buddy16.png",
-      "32": "images/browser_buddy32.png",
-      "48": "images/browser_buddy48.png",
-      "128": "images/browser_buddy128.png"
-    }
-  },
-  "icons": {
-    "16": "images/browser_buddy16.png",
-    "32": "images/browser_buddy32.png",
-    "48": "images/browser_buddy48.png",
-    "128": "images/browser_buddy128.png"
-  },
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+"content_security_policy":"script-src 'self' 'unsafe-eval'; object-src 'self'",
+"web_accessible_resources":[
+"assets/css/*",
+"assets/js/*",
+"assets/fonts/*"
+]
 }
