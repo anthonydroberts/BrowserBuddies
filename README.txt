@@ -21,3 +21,5 @@ in case you want to read it.
 
 -to use the extension, simply click the Browser Buddies icon in the top right corner of 
 your browser, and you will see an interface with options you can select
+
+test
