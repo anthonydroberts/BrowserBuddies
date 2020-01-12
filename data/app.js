@@ -59,7 +59,7 @@ app.post('/links', (req, res) => {
 app.post('/deleteLink', (req, res) => {
     console.log(`${req.connection.remoteAddress} requested (POST) '/deleteLink'`);
 
-    linkManager.deleteLink(`ujCh08UDw9flKPhq142N`, req.body.url);
+    linkManager.deleteLinks(`ujCh08UDw9flKPhq142N`, req.body.url);
 
     visitorManager.trackVisit(req.connection.remoteAddress);
 });
