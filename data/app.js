@@ -62,13 +62,14 @@ app.post('/deleteLink', (req, res) => {
     linkManager.deleteLinks(`ujCh08UDw9flKPhq142N`, req.body.url);
 
     visitorManager.trackVisit(req.connection.remoteAddress);
+    res.sendStatus(200);
 });
 
 app.listen(port, IP, (err) => {
     if (err) {
-    return console.log('Server error:', err)
+        return console.log('Server error:', err)
     }
 
     console.log(`Starting server: ${IP}:${port}`)
-    console.log(`Access: http://192.168.0.13:${port}/`)
+    console.log(`Access: desktop-qdjf5ba:${port}/`)
 });
