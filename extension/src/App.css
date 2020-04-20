@@ -1,48 +1,128 @@
 .App {
   text-align: left;
-  padding:20;
   display:flex;
   flex-direction:column;
-  background-color:#221f2e;
+  padding:20px;
 }
 
 .App-logo {
-  height:5;
-  width:5;
+  width:40px;
   pointer-events: none;
+  margin-right:10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 .Container {
   display:block;
-  width: 300;
-  height: 600;
+  width: 500px;
+  background-color:#22242f;
 }
 
 .App-header {
-  background-color: #221f2e;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
+  flex-direction: column;
+  justify-content: center;
   color: white;
+  margin-bottom:10px;
+  
+}
+.app-header-subtext-container{
+  flex-direction:row;
+  display:flex;
+  flex:1;
+}
+.app-header-subtext{
+  flex-direction: row;
+  display:flex;
+  flex:1;
+  align-items:center;
 }
 
 .Links-display {
   flex-direction: column;
   display:flex;
   align-items:left;
-  background-color: #38344c;
+  background-color: #35394e;
   min-height: 100;
-  margin:50;
+  margin-bottom:10px;
+}
+a{
+  text-decoration: none;
+}
+.group-buttons-container {
+  flex-direction: row;
+  display: flex;
+  flex: 1;
+  background-color:#2b363d;
+}
+
+.group-button{
+  height:40px;
+  font-size:15px;
+  font-weight: bold;
+  background-color: #42535e;
+  color: white;
+  border-width:0;
+}
+.group-links-list{
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+}
+.link-item{
+  padding:3px;
+  flex-direction: row;
+  flex:1;
+  display: flex;
+  align-items:flex-start
+}
+.link-item-desc{
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+}
+.link-item-desc-title{
+  font-size:16px;
+  color:white;
+  font-weight: bold; 
+  margin-right:10px;
+}
+.link-item-desc-url{
+  font-size:14px;
+  color:#eafeea;
+  font-style:italic;
+  margin-right:10px;
+}
+.link-item-favicon{
+  width:30px;
+  pointer-events: none;
+  margin:10px;
+}
+.link-opts-container{
+  position: relative;
+  right:0;
+  top:0;
+  z-index:100;
+  padding:8px;
+  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: row;
+  display: flex;
+  flex:0;
+  min-height:100%;
+
   
 }
 
+button{
+  height:40px;
+  padding:10px;
+  font-size:15px;
+  font-weight: bold;
+   background-color:#35394e;
+  color:white;
+  border-width: 0px;
+}
 .App-link {
   color: #61dafb;
 }
@@ -55,6 +135,18 @@
     transform: rotate(360deg);
   }
 }
+h1{
+  font-size: calc(20px);
+  margin:0px;
+}
+p{
+  font-size:14px;
+  
+  margin:0px;
+  font-style:italic;
+  color:#eafeea;
+}
+
 
 .link{
   text-decoration: none;
