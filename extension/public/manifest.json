@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BrowserBuddies",
+  "name": "BrowserBuddies",
   "manifest_version": 2,
   "browser_action":{
     "default_popup":"index.html",
-    "default_title":"React ext"
+    "default_title":"React extension"
   },
   "version":"1.0",
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
