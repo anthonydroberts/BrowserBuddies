@@ -3,11 +3,15 @@ import React from 'react';
 import logo from './browser-buddies-logo.svg';
 import './App.css';
 import LinkItem from './LinkItem'
-let SERVER_LINKS = {
+
+const ServerLinks = {
   get: 'http://desktop-qdjf5ba:3000/links',
   send: 'http://desktop-qdjf5ba:3000/links',
   delete: 'http://desktop-qdjf5ba:3000/deleteLink'
 }
+
+Object.freeze(ServerLinks);
+
 export default class App extends React.Component {
   constructor(props){
     super(props)
@@ -19,7 +23,7 @@ export default class App extends React.Component {
   getLinks = () => this.state.links
   
   updateLinks = () => {
-    fetch( SERVER_LINKS.get, { 
+    fetch( ServerLinks.get, { 
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     })
@@ -35,7 +39,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
       this.updateLinks();
-      setInterval(this.updateLinks,60000)
+      setInterval(this.updateLinks,60000); // query server for update on links every minute
   }
 
   sendCurrentTab = () =>{
@@ -44,7 +48,7 @@ export default class App extends React.Component {
         url: t[0].url,
         title: t[0].title
       }
-      fetch('http://desktop-qdjf5ba:3000/links',{
+      fetch(ServerLinks.send,{
         method:'POST',
         body:JSON.stringify({link:link}),
         headers: {
@@ -52,33 +56,40 @@ export default class App extends React.Component {
         },
       }).then(res=>{
         setTimeout(this.updateLinks, 500)
-        return res.json()
+        return res.json();
       }
-      ).then(l => {console.log(l);})
+      ).then(l => {
+        console.log(l);
+      })
     });
   }
 
   deleteTab = (link) =>{
     console.log(link)
-    fetch('http://desktop-qdjf5ba:3000/deleteLink',{
+    fetch(ServerLinks.delete,{
       method:'POST',
       body:JSON.stringify({url:link.url}),
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(res=>{
-      setTimeout(this.updateLinks, 500)
-      return res.json()
-    }).then(l => {console.log(l);
+    })
+    .then( res => {
+      setTimeout(this.updateLinks, 500);
+      return res.json();
+    })
+    .then( l => {
+      console.log(l);
       this.updateLinks();
-    }).catch(e=>console.log(e))
+    })
+    .catch( e => console.log(e));
   };
 
   getFavicon =  (link , linkIdx) => {
+    // Google API doesn't always fetch github favicon. Handle github links manually instead
     if (link.includes("github.com")) {
       let links = this.state.links.splice(0);
-      links[linkIdx] = {...links[linkIdx], faviconUrl: "https://github.com/apple-touch-icon.png"}
-      this.setState({links:links})
+      links[linkIdx] = {...links[linkIdx], faviconUrl: "https://github.com/apple-touch-icon.png"};
+      this.setState({links:links});
       return;
     }
 
